@@ -1,0 +1,18 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Nigerian Culture API",
+    "description": "A RESTful API celebrating Nigerian cultural heritage — Dishes, Festivals, Traditional Rulers & Folklore",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Team — Christiana, Morris & Oribi"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {}
+}
