@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -5,7 +7,6 @@ const session = require('express-session');
 const passport = require('passport');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
-require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,15 +36,21 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the Nigerian Culture API! 🇳🇬' });
 });
 
-// Connect to MongoDB then start server
-mongoose
-  .connect(process.env.MONGODB_URI)
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB ✅');
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT} 🚀`);
-    });
+
+    // IMPORTANT: prevent server from starting during tests
+    if (process.env.NODE_ENV !== 'test') {
+      app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT} 🚀`);
+      });
+    }
   })
   .catch((err) => {
     console.error('MongoDB connection error:', err);
   });
+
+// Export app for testing
+module.exports = app;
