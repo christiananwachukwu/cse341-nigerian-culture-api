@@ -12,7 +12,23 @@
     {
       "url": "http://localhost:3000",
       "description": "Local development server"
+    },
+    {
+      "url": "https://cse341-nigerian-culture-api.onrender.com",
+      "description": "Production server"
     }
+
   ],
-  "paths": {}
+  "paths": {
+    "/dishes": {
+      "get": {
+        "summary": "Get all dishes",
+        "responses": {
+          "200": {
+            "description": "List all Nigerian dishes"
+          }
+        }
+        }
+      }
+    }
 }
