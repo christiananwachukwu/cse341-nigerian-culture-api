@@ -2,17 +2,120 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Nigerian Culture API",
-    "description": "A RESTful API celebrating Nigerian cultural heritage — Dishes, Festivals, Traditional Rulers & Folklore",
     "version": "1.0.0",
-    "contact": {
-      "name": "Team — Christiana, Morris & Oribi"
-    }
+    "description": "A RESTful API celebrating Nigerian cultural heritage — Dishes, Festivals, Traditional Rulers & Folklore"
   },
   "servers": [
     {
       "url": "http://localhost:3000",
       "description": "Local development server"
+    },
+    {
+      "url": "https://nigerian-culture-api.onrender.com",
+      "description": "Production server (Render)"
     }
   ],
-  "paths": {}
+  "paths": {
+    "/festivals": {
+      "get": {
+        "summary": "Get all festivals",
+        "responses": {
+          "200": {
+            "description": "List of festivals"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a festival",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "region": { "type": "string" },
+                  "tribe": { "type": "string" },
+                  "dateSeason": { "type": "string" },
+                  "duration": { "type": "string" },
+                  "traditions": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "significance": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Festival created"
+          }
+        }
+      }
+    },
+
+    "/festivals/{id}": {
+      "get": {
+        "summary": "Get a festival by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Festival found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a festival",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Festival updated"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a festival",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Festival deleted"
+          }
+        }
+      }
+    }
+  }
 }
