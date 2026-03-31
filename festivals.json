@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Osun-Osogbo Festival",
+    "region": "Southwest",
+    "tribe": "Yoruba",
+    "dateSeason": "August",
+    "duration": "2 weeks",
+    "traditions": ["river procession", "dance"],
+    "significance": "Honors the river goddess Osun"
+  },
+  {
+    "name": "Argungu Fishing Festival",
+    "region": "Northwest",
+    "tribe": "Hausa",
+    "dateSeason": "March",
+    "duration": "4 days",
+    "traditions": ["fishing", "wrestling"],
+    "significance": "Celebrates fishing culture"
+  },
+  {
+    "name": "New Yam Festival",
+    "region": "Southeast",
+    "tribe": "Igbo",
+    "dateSeason": "August",
+    "duration": "1 week",
+    "traditions": ["yam feast", "dance"],
+    "significance": "Marks new harvest"
+  },
+  {
+    "name": "Eyo Festival",
+    "region": "Southwest",
+    "tribe": "Yoruba",
+    "dateSeason": "April",
+    "duration": "1 day",
+    "traditions": ["masquerade parade"],
+    "significance": "Honors Lagos tradition"
+  },
+  {
+    "name": "Calabar Carnival",
+    "region": "South-South",
+    "tribe": "Efik",
+    "dateSeason": "December",
+    "duration": "1 month",
+    "traditions": ["street parade", "music"],
+    "significance": "Promotes tourism"
+  },
+  {
+    "name": "Durbar Festival",
+    "region": "North",
+    "tribe": "Hausa-Fulani",
+    "dateSeason": "Eid",
+    "duration": "3 days",
+    "traditions": ["horse parade"],
+    "significance": "Royal celebration"
+  },
+  {
+    "name": "Ofala Festival",
+    "region": "Southeast",
+    "tribe": "Igbo",
+    "dateSeason": "October",
+    "duration": "2 days",
+    "traditions": ["king appearance"],
+    "significance": "Celebrates kingship"
+  },
+  {
+    "name": "Ojude Oba Festival",
+    "region": "Southwest",
+    "tribe": "Yoruba",
+    "dateSeason": "After Eid",
+    "duration": "1 day",
+    "traditions": ["family parade"],
+    "significance": "Pays respect to king"
+  },
+  {
+    "name": "Igue Festival",
+    "region": "South-South",
+    "tribe": "Edo",
+    "dateSeason": "December",
+    "duration": "1 week",
+    "traditions": ["royal rituals"],
+    "significance": "Blessing for the land"
+  },
+  {
+    "name": "Leboku Festival",
+    "region": "South-South",
+    "tribe": "Yakurr",
+    "dateSeason": "August",
+    "duration": "1 week",
+    "traditions": ["yam celebration"],
+    "significance": "Harvest celebration"
+  }
+]
