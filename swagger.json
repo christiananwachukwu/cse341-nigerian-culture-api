@@ -17,6 +17,102 @@
 
   ],
   "paths": {
+    "/dishes": {
+      "get": {
+        "summary": "Get all dishes",
+        "responses": {
+          "200": { "description": "List all Nigerian dishes" }
+        }
+      },
+      "post": {
+        "summary": "Create a new dish",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "region", "tribe", "ingredients", "preparation", "occasion", "servingStyle"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "region": { "type": "string" },
+                  "tribe": { "type": "string" },
+                  "ingredients": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "preparation": { "type": "string" },
+                  "occasion": { "type": "string" },
+                  "servingStyle": { "type": "string" },
+                  "imageUrl": { "type": "string" },
+                  "nutritionalNotes": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Dish created successfully" },
+          "400": { "description": "Missing required fields" }
+        }
+      }
+    },
+    "/dishes/{id}": {
+      "get": {
+        "summary": "Get a dish by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Dish found" },
+          "404": { "description": "Dish not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a dish by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": { "type": "object" }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Dish updated" },
+          "404": { "description": "Dish not found" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a dish by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Dish deleted successfully" },
+          "404": { "description": "Dish not found" }
+        }
+      }
+    },
+
     "/festivals": {
       "get": {
         "summary": "Get all festivals",
