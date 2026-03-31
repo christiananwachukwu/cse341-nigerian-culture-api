@@ -11,7 +11,7 @@
       "description": "Local development server"
     },
     {
-      "url": "https://nigerian-culture-api.onrender.com",
+      "url": "https://cse341-nigerian-culture-api.onrender.com",
       "description": "Production server (Render)"
     }
   ],
