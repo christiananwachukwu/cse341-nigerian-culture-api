@@ -12,8 +12,9 @@
     },
     {
       "url": "https://cse341-nigerian-culture-api.onrender.com",
-      "description": "Production server (Render)"
+      "description": "Production server"
     }
+
   ],
   "paths": {
     "/festivals": {
