@@ -1,24 +1,33 @@
-jest.setTimeout(15000); // ✅ increase timeout
+
+jest.setTimeout(15000);
 
 const request = require('supertest');
 const app = require('../server');
+
+// ✅ Keep session for authenticated routes
+const agent = request.agent(app);
 
 describe('Festivals API', () => {
 
   let festivalId;
 
-  // CREATE
+  // ✅ LOGIN FIRST (bypass auth for tests)
+  beforeAll(async () => {
+    await agent.get('/auth/test-login');
+  });
+
+  // ✅ CREATE
   it('should create a festival', async () => {
-    const res = await request(app)
+    const res = await agent
       .post('/festivals')
       .send({
         name: "Test Festival",
         region: "Test Region",
         tribe: "Test Tribe",
-        dateSeason: "Test Month",
-        duration: "1 day",
-        traditions: ["dance"],
-        significance: "Testing"
+        dateSeason: "Summer",
+        duration: "3 days",
+        traditions: ["Dance", "Music"], // ✅ must be array
+        significance: "Test significance"
       });
 
     expect(res.statusCode).toBe(201);
@@ -27,43 +36,40 @@ describe('Festivals API', () => {
     festivalId = res.body._id;
   });
 
-  // GET ALL
+  // ✅ GET ALL
   it('should get all festivals', async () => {
-    const res = await request(app).get('/festivals');
+    const res = await agent.get('/festivals');
 
     expect(res.statusCode).toBe(200);
     expect(Array.isArray(res.body)).toBe(true);
   });
 
-  // GET ONE
+  // ✅ GET BY ID
   it('should get a festival by ID', async () => {
-    const res = await request(app).get(`/festivals/${festivalId}`);
+    const res = await agent.get(`/festivals/${festivalId}`);
 
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('_id', festivalId);
   });
 
-  // UPDATE
+  // ✅ UPDATE
   it('should update a festival', async () => {
-    const res = await request(app)
+    const res = await agent
       .put(`/festivals/${festivalId}`)
-      .send({ duration: "Updated duration" });
+      .send({ duration: "Updated Duration" });
 
     expect(res.statusCode).toBe(200);
-    expect(res.body.duration).toBe("Updated duration");
+    expect(res.body.duration).toBe("Updated Duration");
   });
 
-  // DELETE
+  // ✅ DELETE
   it('should delete a festival', async () => {
-    const res = await request(app)
+    const res = await agent
       .delete(`/festivals/${festivalId}`);
 
     expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveProperty('message');
   });
 
 });
 
-afterAll(async () => {
-  const mongoose = require('mongoose');
-  await mongoose.connection.close();
-});
