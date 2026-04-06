@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./config/passport');
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -30,6 +31,7 @@ app.use('/dishes', require('./routes/dishes'));
 app.use('/festivals', require('./routes/festivals'));
 app.use('/rulers', require('./routes/rulers'));
 app.use('/folklore', require('./routes/folklore'));
+app.use('/auth', require('./routes/auth'));
 
 // Home route
 app.get('/', (req, res) => {
