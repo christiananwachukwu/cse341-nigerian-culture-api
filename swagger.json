@@ -279,6 +279,14 @@
             "schema": { "type": "string" }
           }
         ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {"type": "object"}
+            }
+          }
+        },
         "responses": {
           "200": { "description": "Ruler updated" },
           "404": { "description": "Ruler not found" }
@@ -310,8 +318,39 @@
       },
       "post": {
         "summary": "Create a new folklore story",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["tribe", "characters", "storySummary", "moralLesson", "storyType", "languageOfOrigin", "ageGroup", "region"],
+                "properties": {
+                  "title": { "type": "string"},
+                  "tribe": { "type": "string"},
+                  "characters": { 
+                    "type": "array"},
+                    "items": { "type": "string"}
+                },
+                "storySummary": { "type": "string"},
+                "moralLesson": { "type": "string"},
+                "storyType": {
+                  "type": "string",
+                  "enum": ["folklore", "legend", "myth", "fable", "epic"]
+                },
+                "languageOfOrigin": { "type": "string"},
+                "ageGroup": {
+                  "type": "string",
+                  "enum": ["children", "adults", "all ages" ]
+                },
+                "region": { "type": "string"}
+              }
+            }
+          }
+        },
         "responses": {
-          "201": { "description": "Folklore created successfully" }
+          "201": { "description": "Folklore created successfully" },
+          "400": { "description": "Missing required fields"}
         }
       }
     },
@@ -342,6 +381,14 @@
             "schema": { "type": "string" }
           }
         ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": { "type": "object"}
+            }
+          }
+        },
         "responses": {
           "200": { "description": "Folklore updated" },
           "404": { "description": "Folklore not found" }
