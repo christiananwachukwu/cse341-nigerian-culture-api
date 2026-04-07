@@ -14,7 +14,6 @@
       "url": "https://cse341-nigerian-culture-api.onrender.com",
       "description": "Production server"
     }
-
   ],
   "paths": {
     "/dishes": {
@@ -57,6 +56,7 @@
         }
       }
     },
+
     "/dishes/{id}": {
       "get": {
         "summary": "Get a dish by ID",
@@ -211,6 +211,155 @@
           "200": {
             "description": "Festival deleted"
           }
+        }
+      }
+    },
+
+    "/rulers": {
+      "get": {
+        "summary": "Get all traditional rulers and kingdoms",
+        "responses": {
+          "200": { "description": "List of all Nigerian traditional rulers and kingdoms" }
+        }
+      },
+      "post": {
+        "summary": "Create a new ruler/kingdom entry",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["title", "kingdom", "tribe", "currentHolder", "historicalSignificance", "coronationTraditions", "region", "state", "foundedYear"],
+                "properties": {
+                  "title": { "type": "string" },
+                  "kingdom": { "type": "string" },
+                  "tribe": { "type": "string" },
+                  "currentHolder": { "type": "string" },
+                  "historicalSignificance": { "type": "string" },
+                  "coronationTraditions": { "type": "string" },
+                  "region": { "type": "string" },
+                  "state": { "type": "string" },
+                  "foundedYear": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Ruler created successfully" },
+          "400": { "description": "Missing required fields" }
+        }
+      }
+    },
+
+    "/rulers/{id}": {
+      "get": {
+        "summary": "Get a ruler by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ruler found" },
+          "404": { "description": "Ruler not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a ruler by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ruler updated" },
+          "404": { "description": "Ruler not found" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a ruler by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Ruler deleted successfully" },
+          "404": { "description": "Ruler not found" }
+        }
+      }
+    },
+
+    "/folklore": {
+      "get": {
+        "summary": "Get all folklore stories",
+        "responses": {
+          "200": { "description": "List of all Nigerian folklore stories" }
+        }
+      },
+      "post": {
+        "summary": "Create a new folklore story",
+        "responses": {
+          "201": { "description": "Folklore created successfully" }
+        }
+      }
+    },
+
+    "/folklore/{id}": {
+      "get": {
+        "summary": "Get a folklore story by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Folklore found" },
+          "404": { "description": "Folklore not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a folklore story by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Folklore updated" },
+          "404": { "description": "Folklore not found" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a folklore story by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Folklore deleted successfully" },
+          "404": { "description": "Folklore not found" }
         }
       }
     }
