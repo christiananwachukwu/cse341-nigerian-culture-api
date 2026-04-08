@@ -15,6 +15,27 @@
       "description": "Production server"
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "GitHubOAuth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://github.com/login/oauth/authorize",
+            "tokenUrl": "https://github.com/login/oauth/access_token",
+            "scopes": {
+              "user:email": "Read user email"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "GitHubOAuth": []
+    }
+  ],
   "paths": {
     "/dishes": {
       "get": {
@@ -31,7 +52,15 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["name", "region", "tribe", "ingredients", "preparation", "occasion", "servingStyle"],
+                "required": [
+                  "name",
+                  "region",
+                  "tribe",
+                  "ingredients",
+                  "preparation",
+                  "occasion",
+                  "servingStyle"
+                ],
                 "properties": {
                   "name": { "type": "string" },
                   "region": { "type": "string" },
@@ -219,7 +248,9 @@
       "get": {
         "summary": "Get all traditional rulers and kingdoms",
         "responses": {
-          "200": { "description": "List of all Nigerian traditional rulers and kingdoms" }
+          "200": {
+            "description": "List of all Nigerian traditional rulers and kingdoms"
+          }
         }
       },
       "post": {
@@ -230,7 +261,17 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["title", "kingdom", "tribe", "currentHolder", "historicalSignificance", "coronationTraditions", "region", "state", "foundedYear"],
+                "required": [
+                  "title",
+                  "kingdom",
+                  "tribe",
+                  "currentHolder",
+                  "historicalSignificance",
+                  "coronationTraditions",
+                  "region",
+                  "state",
+                  "foundedYear"
+                ],
                 "properties": {
                   "title": { "type": "string" },
                   "kingdom": { "type": "string" },
@@ -283,7 +324,7 @@
           "required": false,
           "content": {
             "application/json": {
-              "schema": {"type": "object"}
+              "schema": { "type": "object" }
             }
           }
         },
@@ -324,33 +365,44 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["title", "tribe", "characters", "storySummary", "moralLesson", "storyType", "languageOfOrigin", "ageGroup", "region"],
+                "required": [
+                  "title",
+                  "tribe",
+                  "characters",
+                  "storySummary",
+                  "moralLesson",
+                  "storyType",
+                  "languageOfOrigin",
+                  "ageGroup",
+                  "region"
+                ],
                 "properties": {
-                  "title": { "type": "string"},
-                  "tribe": { "type": "string"},
-                  "characters": { 
-                    "type": "array"},
-                    "items": { "type": "string"}
+                  "title": { "type": "string" },
+                  "tribe": { "type": "string" },
+                  "characters": {
+                    "type": "array"
+                  },
+                  "items": { "type": "string" }
                 },
-                "storySummary": { "type": "string"},
-                "moralLesson": { "type": "string"},
+                "storySummary": { "type": "string" },
+                "moralLesson": { "type": "string" },
                 "storyType": {
                   "type": "string",
                   "enum": ["folklore", "legend", "myth", "fable", "epic"]
                 },
-                "languageOfOrigin": { "type": "string"},
+                "languageOfOrigin": { "type": "string" },
                 "ageGroup": {
                   "type": "string",
-                  "enum": ["children", "adults", "all ages" ]
+                  "enum": ["children", "adults", "all ages"]
                 },
-                "region": { "type": "string"}
+                "region": { "type": "string" }
               }
             }
           }
         },
         "responses": {
           "201": { "description": "Folklore created successfully" },
-          "400": { "description": "Missing required fields"}
+          "400": { "description": "Missing required fields" }
         }
       }
     },
@@ -385,7 +437,7 @@
           "required": false,
           "content": {
             "application/json": {
-              "schema": { "type": "object"}
+              "schema": { "type": "object" }
             }
           }
         },
