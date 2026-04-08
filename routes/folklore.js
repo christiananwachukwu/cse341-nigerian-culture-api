@@ -1,20 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const folkloreController = require('../controllers/folklore');
+const isAuthenticated = require('../middleware/auth');
 
-// GET all folklore
+// GET all folklore - public
 router.get('/', folkloreController.getAllFolklore);
 
-// GET single folklore by ID
+// GET single folklore by ID - public
 router.get('/:id', folkloreController.getSingleFolklore);
 
-// POST create new folklore
-router.post('/', folkloreController.createFolklore);
+// POST create new folklore - protected
+router.post('/', isAuthenticated, folkloreController.createFolklore);
 
-// PUT update folklore by ID
-router.put('/:id', folkloreController.updateFolklore);
+// PUT update folklore by ID - protected
+router.put('/:id', isAuthenticated, folkloreController.updateFolklore);
 
-// DELETE folklore by ID
-router.delete('/:id', folkloreController.deleteFolklore);
+// DELETE folklore by ID - protected
+router.delete('/:id', isAuthenticated, folkloreController.deleteFolklore);
 
 module.exports = router;

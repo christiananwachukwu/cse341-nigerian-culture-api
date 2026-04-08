@@ -324,7 +324,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["tribe", "characters", "storySummary", "moralLesson", "storyType", "languageOfOrigin", "ageGroup", "region"],
+                "required": ["title", "tribe", "characters", "storySummary", "moralLesson", "storyType", "languageOfOrigin", "ageGroup", "region"],
                 "properties": {
                   "title": { "type": "string"},
                   "tribe": { "type": "string"},
